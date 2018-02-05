@@ -17,6 +17,7 @@ function Letter (characterVal) {
 
 module.exports = Letter
 
+// var letterVar = new Letter('ab AB');
 
 // console.log(letterVar);
 

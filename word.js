@@ -1,24 +1,29 @@
-// function Word (word) {
-//     this.word = word;
-//     this.guessed = false;
-//     this.replacer = function() {
-//         if (guessed) {
-
-//         }
-//     }
-//     this.checker = function(letter) {
-//         if (this.characterVal === letter) {
-//             this.guessed = true;
-//         }
-//     }
-// }
-
-// var letterVar = new Letter();
-
 var Letter = require('./letter.js');
 
-console.log(Letter);
+var wordArr = [];
 
-var letterVar = new Letter('a');
 
-console.log(letterVar)
+function Word (word) {
+    this.word = word;
+    this.wordArray = function () {
+        var hi = this.word;
+        var format = hi.toLowerCase().replace(/\s+/g, '').split('');
+        for (var i = 0; i < format.length; i++) {
+            var element = format[i];
+            var letterVar = new Letter(element);
+            wordArr.push(letterVar);
+        }
+    }
+    this.underscores = function () {
+        
+    }
+}
+
+var wordConst = new Word ('Jurassic Park')
+wordConst.wordArray()
+console.log(wordArr);
+
+console.log(wordConst);
+
+
+    //     var hi = this.word[i].toLowerCase().replace(/\s+/g, '').split('');
