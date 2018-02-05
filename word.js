@@ -1,25 +1,22 @@
 var Letter = require('./letter.js');
 
 var wordArr = [];
+var arrayThing = [];
 // var letterVar = new Letter(element);
 
 function Word (word) {
     this.word = word.split('').forEach(function(element) {
         var newLetter = new Letter(element)
-        console.log(newLetter)
+        wordArr.push(newLetter)
     });
-    // this.wordArray = function () {
-    //     var hi = this.word;
-    //     var format = hi.toLowerCase().replace(/\s+/g, '').split('');
-    //     for (var i = 0; i < format.length; i++) {
-    //         var element = format[i];
-    //         var letterVar = new Letter(element);
-    //         wordArr.push(letterVar);
-    //     }
-    // }
-    // this.underscores = function (arr) {
-    //     arr.replacer();
-    // }
+    this.underscores = function (arr) {
+        var underscoreStr = '';
+        for (var i = 0; i < arr.length; i++) {
+            var underscoreVal = arr[i].replacer();
+            underscoreStr += underscoreVal
+        }
+        return underscoreStr
+    }
 }
 
 var wordConst = new Word ('Jurassic Park')
@@ -29,4 +26,8 @@ var wordConst = new Word ('Jurassic Park')
 
 console.log(wordConst);
 
+console.log(wordArr[1].characterVal);
 
+console.log(wordConst.underscores(wordArr));
+
+// console.log();
