@@ -2,10 +2,10 @@ function Letter (characterVal) {
     this.characterVal = characterVal;
     this.guessed = false;
     this.replacer = function() {
-        if (!this.guessed) {
-            return this.characterVal = "_"
-        } else {
+        if (this.guessed) {
             return this.characterVal
+        } else {
+            return this.characterVal = "_"
         }
     }
     this.checker = function(letter) {
@@ -17,7 +17,7 @@ function Letter (characterVal) {
 
 module.exports = Letter
 
-// var letterVar = new Letter('ab AB');
+// var letterVar = new Letter('a');
 
 // console.log(letterVar);
 

@@ -11,3 +11,7 @@
 // User guesses letters, guessed letter values change to true
 // If guessed letters are in word, display letters
 // If not, decrement chances and leave underscores displayed
+
+var inquirer = require('inquirer');
+
+console.log(inquirer)
