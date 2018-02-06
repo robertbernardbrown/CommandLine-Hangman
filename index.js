@@ -13,8 +13,8 @@
 // If not, decrement chances and leave underscores displayed
 
 var inquirer = require('inquirer');
-var wordStuff = require('./word.js');
-var letterStuff = require('./letter.js');
+var Word = require('./word.js');
+var Letter = require('./letter.js');
 
 console.log('Welcome to Command-Line Hangman!')
 
@@ -27,19 +27,37 @@ function initialPrompt() {
 
         if (answers.confirmation) {
 
+            var allTheWords = ['Jurassic Park']
+            var wordArr = Word.arr;
+            var wordConst = new Word.Word (allTheWords[0]);
+            var chances = 10;
+
             function nextPrompt() {
+                if(wordConst.underscores(wordArr) !== allTheWords[0]) {
                 inquirer.prompt([{
                     type: 'input',
                     name: 'inputVal',
                     message: 'Guess a letter!'
                 }]).then(answers => {
 
-                    console.log(answers.inputVal);
+                    displayWord(answers.inputVal)
+                    nextPrompt();
 
                 })
+
+                } else {
+                    console.log('You win!')
+                }
             }
 
+            function displayWord (x) {
+                wordConst.guess(x);
+                console.log(wordConst.underscores(wordArr));
+            }
+
+            displayWord('');
             nextPrompt();
+            
 
         } else {
             console.log('No sweat! Come back later if you decide you want to play.')

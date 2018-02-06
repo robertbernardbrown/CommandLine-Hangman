@@ -30,7 +30,10 @@ Word.prototype.guess = function (char) {
     }
 }
 
-module.exports = Word;
+module.exports = {
+    Word: Word,
+    arr: wordArr
+}
 
 // var wordConst = new Word ("The Crank\'s")
 
