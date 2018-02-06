@@ -27,13 +27,15 @@ function initialPrompt() {
 
         if (answers.confirmation) {
 
-            var allTheWords = ['Jurassic Park']
+            var allTheWords = ['Jurassic Park', 'Land of the Lost', 'Hot Rod', 'Moana', 'Back to the Future'];
+            var randomNum = Math.floor(Math.random() * 4) + 1;
+            var theWord = allTheWords[randomNum];
             var wordArr = Word.arr;
-            var wordConst = new Word.Word (allTheWords[0]);
+            var wordConst = new Word.Word (theWord);
             var chances = 10;
 
             function nextPrompt() {
-                if(wordConst.underscores(wordArr) !== allTheWords[0]) {
+                if(wordConst.underscores(wordArr) !== theWord) {
                 inquirer.prompt([{
                     type: 'input',
                     name: 'inputVal',
