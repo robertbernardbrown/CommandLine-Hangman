@@ -20,11 +20,10 @@ console.log('Welcome to Command-Line Hangman!')
 
 function initialPrompt() {
     inquirer.prompt([{
-            type: 'confirm',
-            name: 'confirmation',
-            message: 'Ready to play?'
-        }
-    ]).then(answers => {
+        type: 'confirm',
+        name: 'confirmation',
+        message: 'Ready to play?'
+    }]).then(answers => {
 
         if (answers.confirmation) {
             console.log('hi')

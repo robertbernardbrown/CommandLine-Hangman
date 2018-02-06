@@ -2,8 +2,8 @@ var Letter = require('./letter.js');
 
 var wordArr = [];
 
-function Word (word) {
-    this.word = word.split('').forEach(function(element) {
+function Word(word) {
+    this.word = word.split('').forEach(function (element) {
         var newLetter = new Letter(element);
         wordArr.push(newLetter);
         return wordArr;

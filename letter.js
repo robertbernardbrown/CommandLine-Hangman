@@ -1,9 +1,9 @@
-function Letter (characterVal) {
+function Letter(characterVal) {
     this.characterVal = characterVal;
     this.guessed = false;
 }
 
-Letter.prototype.replacer = function() {
+Letter.prototype.replacer = function () {
     if (this.guessed) {
         return this.characterVal;
     } else {
@@ -11,11 +11,11 @@ Letter.prototype.replacer = function() {
     }
 }
 
-Letter.prototype.checker = function(letter) {
-        if (this.characterVal === letter) {
-            this.guessed = true;
-        }
+Letter.prototype.checker = function (letter) {
+    if (this.characterVal === letter) {
+        this.guessed = true;
     }
+}
 
 module.exports = Letter;
 
