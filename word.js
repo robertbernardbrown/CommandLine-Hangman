@@ -8,14 +8,22 @@ function Word (word) {
     this.word = word.split('').forEach(function(element) {
         var newLetter = new Letter(element)
         wordArr.push(newLetter)
+        return wordArr
     });
-    this.underscores = function (arr) {
+    this.underscores = function () {
         var underscoreStr = '';
-        for (var i = 0; i < arr.length; i++) {
-            var underscoreVal = arr[i].replacer();
+        var thisWord = this.word;
+        for (var i = 0; i < thisWord.length; i++) {
+            var underscoreVal = thisWord[i].replacer();
             underscoreStr += underscoreVal
         }
         return underscoreStr
+    }
+    this.guess = function (char) {
+        var thisWord = this.word;
+        for (var i = 0; i < thisWord.length; i++) {
+            thisWord[i].checker(char);
+        }
     }
 }
 
@@ -24,10 +32,15 @@ var wordConst = new Word ('Jurassic Park')
 // wordConst.underscores(wordArr)
 // console.log(wordArr);
 
-console.log(wordConst);
+// console.log(wordConst);
 
-console.log(wordArr[1].characterVal);
+console.log(wordArr);
 
-console.log(wordConst.underscores(wordArr));
+// wordConst.underscores(wordArr);
+
+console.log(wordConst.guess('u'));
+
+console.log(wordArr)
+
 
 // console.log();
