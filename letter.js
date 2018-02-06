@@ -19,10 +19,10 @@ Letter.prototype.checker = function(letter) {
 
 module.exports = Letter
 
-var letterVar = new Letter('a');
+// var letterVar = new Letter('a');
 
-console.log(letterVar);
+// console.log(letterVar);
 
-console.log(letterVar.checker('a'));
+// console.log(letterVar.checker('a'));
 
-console.log(letterVar.replacer());
+// console.log(letterVar.replacer());

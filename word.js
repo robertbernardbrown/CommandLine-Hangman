@@ -10,20 +10,22 @@ function Word (word) {
         wordArr.push(newLetter)
         return wordArr
     });
-    this.underscores = function () {
-        var underscoreStr = '';
-        var thisWord = this.word;
-        for (var i = 0; i < thisWord.length; i++) {
-            var underscoreVal = thisWord[i].replacer();
-            underscoreStr += underscoreVal
-        }
-        return underscoreStr
+}
+
+Word.prototype.underscores = function () {
+    var underscoreStr = '';
+    var thisWord = this.word;
+    for (var i = 0; i < thisWord.length; i++) {
+        var underscoreVal = thisWord[i].replacer();
+        underscoreStr += underscoreVal
     }
-    this.guess = function (char) {
-        var thisWord = this.word;
-        for (var i = 0; i < thisWord.length; i++) {
-            thisWord[i].checker(char);
-        }
+    return underscoreStr
+}
+
+Word.prototype.guess = function (char) {
+    var thisWord = this.word;
+    for (var i = 0; i < thisWord.length; i++) {
+        thisWord[i].checker(char);
     }
 }
 
@@ -38,7 +40,7 @@ console.log(wordArr);
 
 // wordConst.underscores(wordArr);
 
-console.log(wordConst.guess('u'));
+// console.log(wordConst.guess('u'));
 
 console.log(wordArr)
 
