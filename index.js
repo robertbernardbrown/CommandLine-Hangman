@@ -26,13 +26,26 @@ function initialPrompt() {
     }]).then(answers => {
 
         if (answers.confirmation) {
-            console.log('hi')
+
+            function nextPrompt() {
+                inquirer.prompt([{
+                    type: 'input',
+                    name: 'inputVal',
+                    message: 'Guess a letter!'
+                }]).then(answers => {
+
+                    console.log(answers.inputVal);
+
+                })
+            }
+
+            nextPrompt();
+
         } else {
-            console.log('No sweat! Come back if you decide you want to play.')
+            console.log('No sweat! Come back later if you decide you want to play.')
         }
 
     });
 }
 
 initialPrompt();
-
