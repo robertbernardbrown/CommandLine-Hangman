@@ -1,8 +1,6 @@
 var Letter = require('./letter.js');
 
 var wordArr = [];
-var arrayThing = [];
-// var letterVar = new Letter(element);
 
 function Word (word) {
     this.word = word.split('').forEach(function(element) {
@@ -14,35 +12,42 @@ function Word (word) {
 
 Word.prototype.underscores = function () {
     var underscoreStr = '';
-    var thisWord = this.word;
-    for (var i = 0; i < thisWord.length; i++) {
-        var underscoreVal = thisWord[i].replacer();
+    for (var i = 0; i < wordArr.length; i++) {
+        var underscoreVal = wordArr[i].replacer();
         underscoreStr += underscoreVal
     }
     return underscoreStr
+    console.log(underscoreStr)
 }
 
 Word.prototype.guess = function (char) {
-    var thisWord = this.word;
-    for (var i = 0; i < thisWord.length; i++) {
-        thisWord[i].checker(char);
+    for (var i = 0; i < wordArr.length; i++) {
+        wordArr[i].checker(char);
+        wordArr[i].checker(char.toUpperCase());
+        wordArr[i].checker(' ');
+        wordArr[i].checker("'");
+        wordArr[i].checker("-");
     }
 }
 
-var wordConst = new Word ('Jurassic Park')
-// wordConst.wordArray()
-// wordConst.underscores(wordArr)
+var wordConst = new Word ("The Crank\'s")
+
 // console.log(wordArr);
 
-// console.log(wordConst);
+// wordConst.guess('u');
+// wordConst.guess('j');
 
-console.log(wordArr);
+// console.log(wordConst.underscores(wordArr));
 
-// wordConst.underscores(wordArr);
+// wordConst.guess('s');
 
-// console.log(wordConst.guess('u'));
+// console.log(wordConst.underscores(wordArr));
 
-console.log(wordArr)
+// wordConst.guess('r');
 
+// console.log(wordConst.underscores(wordArr));
 
-// console.log();
+// wordConst.guess('a');
+
+// console.log(wordConst.underscores(wordArr));
+

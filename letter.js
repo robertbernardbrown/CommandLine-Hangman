@@ -7,7 +7,7 @@ Letter.prototype.replacer = function() {
     if (this.guessed) {
         return this.characterVal
     } else {
-        return this.characterVal = "_"
+        return "_"
     }
 }
 
@@ -23,6 +23,6 @@ module.exports = Letter
 
 // console.log(letterVar);
 
-// console.log(letterVar.checker('a'));
+// console.log(letterVar.checker('k'));
 
 // console.log(letterVar.replacer());
