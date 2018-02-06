@@ -5,9 +5,9 @@ function Letter (characterVal) {
 
 Letter.prototype.replacer = function() {
     if (this.guessed) {
-        return this.characterVal
+        return this.characterVal;
     } else {
-        return "_"
+        return "_";
     }
 }
 
@@ -17,7 +17,7 @@ Letter.prototype.checker = function(letter) {
         }
     }
 
-module.exports = Letter
+module.exports = Letter;
 
 // var letterVar = new Letter('a');
 

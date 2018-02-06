@@ -13,5 +13,27 @@
 // If not, decrement chances and leave underscores displayed
 
 var inquirer = require('inquirer');
+var wordStuff = require('./word.js');
+var letterStuff = require('./letter.js');
 
-console.log(inquirer)
+console.log('Welcome to Command-Line Hangman!')
+
+function initialPrompt() {
+    inquirer.prompt([{
+            type: 'confirm',
+            name: 'confirmation',
+            message: 'Ready to play?'
+        }
+    ]).then(answers => {
+
+        if (answers.confirmation) {
+            console.log('hi')
+        } else {
+            console.log('No sweat! Come back if you decide you want to play.')
+        }
+
+    });
+}
+
+initialPrompt();
+

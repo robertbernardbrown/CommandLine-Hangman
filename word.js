@@ -4,9 +4,9 @@ var wordArr = [];
 
 function Word (word) {
     this.word = word.split('').forEach(function(element) {
-        var newLetter = new Letter(element)
-        wordArr.push(newLetter)
-        return wordArr
+        var newLetter = new Letter(element);
+        wordArr.push(newLetter);
+        return wordArr;
     });
 }
 
@@ -14,10 +14,10 @@ Word.prototype.underscores = function () {
     var underscoreStr = '';
     for (var i = 0; i < wordArr.length; i++) {
         var underscoreVal = wordArr[i].replacer();
-        underscoreStr += underscoreVal
+        underscoreStr += underscoreVal;
     }
-    return underscoreStr
-    console.log(underscoreStr)
+    return underscoreStr;
+    console.log(underscoreStr);
 }
 
 Word.prototype.guess = function (char) {
@@ -30,7 +30,9 @@ Word.prototype.guess = function (char) {
     }
 }
 
-var wordConst = new Word ("The Crank\'s")
+module.exports = Word;
+
+// var wordConst = new Word ("The Crank\'s")
 
 // console.log(wordArr);
 
