@@ -1,17 +1,3 @@
-// Game starts
-
-// Random word is chosen from game memory
-
-// Word constructor takes random word and puts the word into an array
-
-// Word constructor uses Letter constructor to change the random word into blank spaces
-
-// Blank spaces are displayed to user
-
-// User guesses letters, guessed letter values change to true
-// If guessed letters are in word, display letters
-// If not, decrement chances and leave underscores displayed
-
 var inquirer = require('inquirer');
 var Word = require('./word.js');
 var Letter = require('./letter.js');
@@ -33,6 +19,7 @@ function initialPrompt() {
             var wordArr = Word.arr;
             console.log(theWord)
             var wordConst = new Word.Word (theWord);
+            var letterConst = new Letter (theWord);
             var chances = 10;
 
             function nextPrompt() {
@@ -44,20 +31,42 @@ function initialPrompt() {
                 }]).then(answers => {
 
                     displayWord(answers.inputVal)
+                    guessResponse(answers.inputVal)
                     nextPrompt();
 
                 })
 
                 } else {
-                    console.log('You win!')
+                    console.log('You guessed the word!')
                     allTheWords.splice(randomNum, 1);
                     console.log(allTheWords)
                 }
             }
 
-            function displayWord (x) {
-                wordConst.guess(x);
+            function displayWord (letter) {
+                wordConst.guess(letter);
                 console.log(wordConst.underscores(wordArr));
+            }
+
+            function guessResponse(letter) {
+                var flag = false;
+                for (var i = 0; i < wordArr.length; i++) {
+                    var element = wordArr[i].characterVal;
+                    if (letter === element || letter.toUpperCase() === element) {
+                        flag = true;
+                    } 
+                }
+                if (flag) {
+                    console.log("Correct!");
+                } else {
+                    console.log("Good guess! Try Again");
+                    chances--
+                    console.log("You have " + chances + " left!");
+                }
+            }
+
+            function gameOverCheck (chanceVar) {
+                
             }
 
             displayWord('');
