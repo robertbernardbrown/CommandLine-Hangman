@@ -6,7 +6,8 @@ function Word(word) {
         var wordArr = [];
         for (var i = 0; i < splitWord.length; i++) {
             var element = splitWord[i];
-            wordArr.push(element);
+            var wordElement = new Letter (element)
+            wordArr.push(wordElement);
         }
         return wordArr
     }
@@ -15,8 +16,9 @@ function Word(word) {
     
 Word.prototype.underscores = function () {
     var underscoreStr = '';
-    for (var i = 0; i < wordArr.length; i++) {
-        var underscoreVal = wordArr[i].replacer();
+    var thisWord = this.word;
+    for (var i = 0; i < thisWord.length; i++) {
+        var underscoreVal = thisWord[i].replacer();
         underscoreStr += underscoreVal;
     }
     return underscoreStr;
@@ -24,12 +26,13 @@ Word.prototype.underscores = function () {
 }
 
 Word.prototype.guess = function (char) {
-    for (var i = 0; i < wordArr.length; i++) {
-        wordArr[i].checker(char);
-        wordArr[i].checker(char.toUpperCase());
-        wordArr[i].checker(' ');
-        wordArr[i].checker("'");
-        wordArr[i].checker("-");
+    var thisWord = this.word;
+    for (var i = 0; i < thisWord.length; i++) {
+        thisWord[i].checker(char);
+        thisWord[i].checker(char.toUpperCase());
+        thisWord[i].checker(' ');
+        thisWord[i].checker("'");
+        thisWord[i].checker("-");
     }
 }
 

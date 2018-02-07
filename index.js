@@ -15,16 +15,12 @@ function initialPrompt() {
             var allTheWords = ['Dude', 'Manny', 'Hot Rod', 'Moana', 'Harry'];
             var randomNum = Math.floor(Math.random() * 4);
             var theWord = allTheWords[randomNum];
-            console.log(theWord, Word.arr)
             var wordConst = new Word.Word(theWord);
-            var wordArr = Word.arr;
-            console.log(Word.arr)
-            var letterConst = new Letter(theWord);
             var chances = 10;
-            console.log(theWord, wordArr, Word.arr, wordConst, letterConst)
+            console.log(theWord, wordConst)
 
             function nextPrompt() {
-                if (wordConst.underscores(wordArr) !== theWord && chances > 0) {
+                if (wordConst.underscores() !== theWord && chances > 0) {
                     inquirer.prompt([{
                         type: 'input',
                         name: 'inputVal',
@@ -36,7 +32,7 @@ function initialPrompt() {
                         nextPrompt();
 
                     })
-                } else if (wordConst.underscores(wordArr) !== theWord && chances === 0) {
+                } else if (wordConst.underscores() !== theWord && chances === 0) {
                     gameOverCheck(chances);
                 } else {
                     console.log('You guessed the word!')
@@ -47,13 +43,13 @@ function initialPrompt() {
 
             function displayWord(letter) {
                 wordConst.guess(letter);
-                console.log(wordConst.underscores(wordArr));
+                console.log(wordConst.underscores());
             }
 
             function guessResponse(letter) {
                 var flag = false;
-                for (var i = 0; i < wordArr.length; i++) {
-                    var element = wordArr[i].characterVal;
+                for (var i = 0; i < wordConst.word.length; i++) {
+                    var element = wordConst.word[i].characterVal;
                     if (letter === element || letter.toUpperCase() === element) {
                         flag = true;
                     }
@@ -75,9 +71,7 @@ function initialPrompt() {
                         message: 'GAME OVER! Play again?'
                     }]).then(answers => {
                         if (answers.playAgain) {
-                            wordArr = [];
-                            wordConst.clearVar();
-                            console.log(wordArr, wordConst)
+                            console.log(wordConst)
                             initialPrompt();
                         } else {
                             console.log('No prob, come back later!')
