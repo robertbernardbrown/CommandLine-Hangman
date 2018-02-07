@@ -31,6 +31,7 @@ function initialPrompt() {
             var randomNum = Math.floor(Math.random() * 4) + 1;
             var theWord = allTheWords[randomNum];
             var wordArr = Word.arr;
+            console.log(theWord)
             var wordConst = new Word.Word (theWord);
             var chances = 10;
 
@@ -49,6 +50,8 @@ function initialPrompt() {
 
                 } else {
                     console.log('You win!')
+                    allTheWords.splice(randomNum, 1);
+                    console.log(allTheWords)
                 }
             }
 
