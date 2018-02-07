@@ -1,7 +1,5 @@
 var Letter = require('./letter.js');
 
-// var wordArr = [];
-
 function Word(word) {
     this.makeArray = (word) => {
         var splitWord = word.split('');
@@ -15,14 +13,6 @@ function Word(word) {
     this.word = this.makeArray(word);
 }
     
-    
-//     word.split('').forEach(function (element) {
-//         var newLetter = new Letter(element);
-//         wordArr.push(newLetter);
-//         return wordArr;
-//     });
-// }
-
 Word.prototype.underscores = function () {
     var underscoreStr = '';
     for (var i = 0; i < wordArr.length; i++) {
@@ -43,30 +33,6 @@ Word.prototype.guess = function (char) {
     }
 }
 
-var newWord = new Word('pokemon');
-console.log(newWord.word)
-
 module.exports = {
     Word: Word
 }
-
-// var wordConst = new Word ("The Crank\'s")
-
-// console.log(wordArr);
-
-// wordConst.guess('u');
-// wordConst.guess('j');
-
-// console.log(wordConst.underscores(wordArr));
-
-// wordConst.guess('s');
-
-// console.log(wordConst.underscores(wordArr));
-
-// wordConst.guess('r');
-
-// console.log(wordConst.underscores(wordArr));
-
-// wordConst.guess('a');
-
-// console.log(wordConst.underscores(wordArr));
