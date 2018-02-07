@@ -1,14 +1,27 @@
 var Letter = require('./letter.js');
 
-var wordArr = [];
+// var wordArr = [];
 
 function Word(word) {
-    this.word = word.split('').forEach(function (element) {
-        var newLetter = new Letter(element);
-        wordArr.push(newLetter);
-        return wordArr;
-    });
+    this.makeArray = (word) => {
+        var splitWord = word.split('');
+        var wordArr = [];
+        for (var i = 0; i < splitWord.length; i++) {
+            var element = splitWord[i];
+            wordArr.push(element);
+        }
+        return wordArr
+    }
+    this.word = this.makeArray(word);
 }
+    
+    
+//     word.split('').forEach(function (element) {
+//         var newLetter = new Letter(element);
+//         wordArr.push(newLetter);
+//         return wordArr;
+//     });
+// }
 
 Word.prototype.underscores = function () {
     var underscoreStr = '';
@@ -30,9 +43,11 @@ Word.prototype.guess = function (char) {
     }
 }
 
+var newWord = new Word('pokemon');
+console.log(newWord.word)
+
 module.exports = {
-    Word: Word,
-    arr: wordArr
+    Word: Word
 }
 
 // var wordConst = new Word ("The Crank\'s")
@@ -55,4 +70,3 @@ module.exports = {
 // wordConst.guess('a');
 
 // console.log(wordConst.underscores(wordArr));
-
