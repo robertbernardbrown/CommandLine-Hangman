@@ -6,14 +6,14 @@ function Word(word) {
         var wordArr = [];
         for (var i = 0; i < splitWord.length; i++) {
             var element = splitWord[i];
-            var wordElement = new Letter (element)
+            var wordElement = new Letter(element)
             wordArr.push(wordElement);
         }
         return wordArr
     }
     this.word = this.makeArray(word);
 }
-    
+
 Word.prototype.underscores = function () {
     var underscoreStr = '';
     var thisWord = this.word;

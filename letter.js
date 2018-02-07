@@ -18,11 +18,3 @@ Letter.prototype.checker = function (letter) {
 }
 
 module.exports = Letter;
-
-// var letterVar = new Letter('a');
-
-// console.log(letterVar);
-
-// console.log(letterVar.checker('k'));
-
-// console.log(letterVar.replacer());
