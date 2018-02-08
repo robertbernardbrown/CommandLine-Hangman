@@ -8,7 +8,7 @@ One page application to determine if restaurants in a given radius are open at t
 
 ## Preview
 
-<img src="preview.gif" width="500"/>
+<img src="preview.gif" width="700"/>
 
 ## Getting Started
 
