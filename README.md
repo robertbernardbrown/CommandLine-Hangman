@@ -6,6 +6,10 @@ One page application to determine if restaurants in a given radius are open at t
 
 <img src="screenshot.png" width="300">
 
+## Preview
+
+<img src="preview.gif" width="300"/>
+
 ## Getting Started
 
 Download my project and install inquirer from npm to get going!
