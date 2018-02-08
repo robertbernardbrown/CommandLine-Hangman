@@ -16,13 +16,11 @@ function initialPrompt() {
 
             function runGame() {
                 var randomNum = Math.floor(Math.random() * (allTheWords.length - 1));
-                console.log(randomNum, allTheWords)
                 var theWord = allTheWords[randomNum];
                 var wordConst = new Word.Word(theWord);
                 var chances = 10;
                 var alphabet = 'qwertyuiopasdfghjklzxcvbnm'
                 var alphabetArr = alphabet.split('')
-                console.log(theWord, wordConst)
 
                 function nextPrompt() {
                     if (wordConst.underscores() !== theWord && chances > 0) {
@@ -55,12 +53,9 @@ function initialPrompt() {
                         gameOverCheck(chances);
                     } else {
 
-                        console.log(allTheWords.length)
-
                         if ((allTheWords.length - 1) > 0) {
                             console.log('You guessed the word! Onto the next one')
                             allTheWords.splice(randomNum, 1);
-                            console.log(allTheWords)
                             runGame();
                         } else {
 
