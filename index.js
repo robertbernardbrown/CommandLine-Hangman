@@ -17,6 +17,8 @@ function initialPrompt() {
             var theWord = allTheWords[randomNum];
             var wordConst = new Word.Word(theWord);
             var chances = 10;
+            var alphabet = 'qwertyuiopasdfghjklzxcvbnm'
+            var alphabetArr = alphabet.split('')
             console.log(theWord, wordConst)
 
             function nextPrompt() {
@@ -27,9 +29,23 @@ function initialPrompt() {
                         message: 'Guess a letter!'
                     }]).then(answers => {
 
-                        displayWord(answers.inputVal)
-                        guessResponse(answers.inputVal)
-                        nextPrompt();
+                        var flag = false;
+                        for (var i = 0; i < alphabetArr.length; i++) {
+                            var element = alphabetArr[i];
+                            if (element === answers.inputVal) {
+                                alphabetArr.splice(i, 1)
+                                flag = true;
+                            }
+                        }
+                        if (flag) {
+                            displayWord(answers.inputVal);
+                            correctResponse(answers.inputVal);
+                            nextPrompt();
+                        } else {
+                            console.log("Please choose a different letter.")
+                            displayWord(answers.inputVal);
+                            nextPrompt();
+                        }
 
                     })
                 } else if (wordConst.underscores() !== theWord && chances === 0) {
@@ -46,7 +62,7 @@ function initialPrompt() {
                 console.log(wordConst.underscores());
             }
 
-            function guessResponse(letter) {
+            function correctResponse(letter) {
                 var flag = false;
                 for (var i = 0; i < wordConst.word.length; i++) {
                     var element = wordConst.word[i].characterVal;
@@ -57,7 +73,7 @@ function initialPrompt() {
                 if (flag) {
                     console.log("Correct!");
                 } else {
-                    console.log("Good guess! Try Again");
+                    console.log("Good try! Try Again");
                     chances--
                     console.log("You have " + chances + " chances left!");
                 }
@@ -81,8 +97,7 @@ function initialPrompt() {
             }
 
             displayWord('');
-            nextPrompt();
-
+            nextPrompt()
 
         } else {
             console.log('No sweat! Come back later if you decide you want to play.')
