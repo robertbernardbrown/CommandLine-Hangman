@@ -1,5 +1,6 @@
 console.log('Welcome to Command-Line Hangman!')
 
+//ask player if they'd like to play, on confirmation begin game
 function initialPrompt() {
     var Word = require('./word.js');
     var Letter = require('./letter.js');
@@ -14,6 +15,7 @@ function initialPrompt() {
         if (answers.confirmation) {
             var allTheWords = ['Never', 'Gonna', 'Give', 'You', 'Up'];
 
+            //run the game portion of the code. Contains further prompts for letter guesses and catches for guessing same letter or non-letters
             function runGame() {
                 var randomNum = Math.floor(Math.random() * (allTheWords.length - 1));
                 var theWord = allTheWords[randomNum];
@@ -22,6 +24,7 @@ function initialPrompt() {
                 var alphabet = 'qwertyuiopasdfghjklzxcvbnm'
                 var alphabetArr = alphabet.split('')
 
+                //Guess letter prompt loops recursively until player is out of chances or guesses the puzzle
                 function nextPrompt() {
                     if (wordConst.underscores() !== theWord && chances > 0) {
                         inquirer.prompt([{
@@ -75,11 +78,13 @@ function initialPrompt() {
                     }
                 }
 
+                //calls Word method guess and underscores on the guessed letter to reveal if player guessed correctly
                 function displayWord(letter) {
                     wordConst.guess(letter);
                     console.log(wordConst.underscores());
                 }
 
+                //returns a response to the player based on if guess was right or wrong, also decrements chances if wrong
                 function correctResponse(letter) {
                     var flag = false;
                     for (var i = 0; i < wordConst.word.length; i++) {
@@ -97,6 +102,7 @@ function initialPrompt() {
                     }
                 }
 
+                //checks a players chances each turn and returns a game over message if chances = 0
                 function gameOverCheck(chanceVar) {
                     if (chanceVar === 0) {
                         inquirer.prompt([{
