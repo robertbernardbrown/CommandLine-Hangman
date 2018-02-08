@@ -12,7 +12,7 @@ Download my project and install inquirer from npm to get going!
 
 ### Prerequisites
 
-npm [inquirer] (https://www.npmjs.com/package/inquirer)
+npm [inquirer](https://www.npmjs.com/package/inquirer)
 
 ### Technologies Used
 
