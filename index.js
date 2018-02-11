@@ -1,9 +1,8 @@
-console.log('Welcome to Command-Line Hangman!')
+console.log('Welcome to Command-Line Hangman!');
 
 //ask player if they'd like to play, on confirmation begin game
 function initialPrompt() {
     var Word = require('./word.js');
-    var Letter = require('./letter.js');
     var inquirer = require('inquirer');
 
     inquirer.prompt([{
@@ -12,17 +11,19 @@ function initialPrompt() {
         message: 'Ready to play?'
     }]).then(answers => {
 
+        var runGame;
+
         if (answers.confirmation) {
             var allTheWords = ['Never', 'Gonna', 'Give', 'You', 'Up'];
 
             //run the game portion of the code. Contains further prompts for letter guesses and catches for guessing same letter or non-letters
-            function runGame() {
+            runGame = function () {
                 var randomNum = Math.floor(Math.random() * (allTheWords.length - 1));
                 var theWord = allTheWords[randomNum];
                 var wordConst = new Word.Word(theWord);
                 var chances = 10;
-                var alphabet = 'qwertyuiopasdfghjklzxcvbnm'
-                var alphabetArr = alphabet.split('')
+                var alphabet = 'qwertyuiopasdfghjklzxcvbnm';
+                var alphabetArr = alphabet.split('');
 
                 //Guess letter prompt loops recursively until player is out of chances or guesses the puzzle
                 function nextPrompt() {
@@ -37,7 +38,7 @@ function initialPrompt() {
                             for (var i = 0; i < alphabetArr.length; i++) {
                                 var element = alphabetArr[i];
                                 if (element === answers.inputVal) {
-                                    alphabetArr.splice(i, 1)
+                                    alphabetArr.splice(i, 1);
                                     flag = true;
                                 }
                             }
@@ -46,18 +47,18 @@ function initialPrompt() {
                                 correctResponse(answers.inputVal);
                                 nextPrompt();
                             } else {
-                                console.log("Please choose a different letter.")
+                                console.log("Please choose a different letter.");
                                 displayWord(answers.inputVal);
                                 nextPrompt();
                             }
 
-                        })
+                        });
                     } else if (wordConst.underscores() !== theWord && chances === 0) {
                         gameOverCheck(chances);
                     } else {
 
                         if ((allTheWords.length - 1) > 0) {
-                            console.log('You guessed the word! Onto the next one')
+                            console.log('You guessed the word! Onto the next one');
                             allTheWords.splice(randomNum, 1);
                             runGame();
                         } else {
@@ -70,9 +71,9 @@ function initialPrompt() {
                                 if (answers.playAgain) {
                                     initialPrompt();
                                 } else {
-                                    console.log('No prob, come back later!')
+                                    console.log('No prob, come back later!');
                                 }
-                            })
+                            });
                         }
 
                     }
@@ -97,7 +98,7 @@ function initialPrompt() {
                         console.log("Correct!");
                     } else {
                         console.log("Good try! Try Again");
-                        chances--
+                        chances--;
                         console.log("You have " + chances + " chances left!");
                     }
                 }
@@ -111,24 +112,24 @@ function initialPrompt() {
                             message: 'GAME OVER! Play again?'
                         }]).then(answers => {
                             if (answers.playAgain) {
-                                console.log(wordConst)
+                                console.log(wordConst);
                                 initialPrompt();
                             } else {
-                                console.log('No prob, come back later!')
+                                console.log('No prob, come back later!');
                             }
-                        })
+                        });
                     }
                 }
 
                 displayWord('');
-                nextPrompt()
+                nextPrompt();
 
-            }
+            };
 
             runGame();
 
         } else {
-            console.log('No sweat! Come back later if you decide you want to play.')
+            console.log('No sweat! Come back later if you decide you want to play.');
         }
 
     });
