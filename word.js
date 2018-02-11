@@ -25,7 +25,6 @@ Word.prototype.underscores = function () {
 		underscoreStr += underscoreVal;
 	}
 	return underscoreStr;
-	console.log(underscoreStr);
 };
 
 //guess runs the Letter.checker function to see if a Letter objects underlying guessed variable should be changed to 'true'
