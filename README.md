@@ -1,6 +1,6 @@
 # Command Line Hangman
 
-One page application to determine if restaurants in a given radius are open at the current moment.
+Play hangman from the command line!
 
 ## Screenshot
 
